@@ -3,42 +3,42 @@ type Result struct {
 	PersonList []Person `xml:"person" json:"people"`
 }
 type Result struct {
-
-<U12>0.0</U12>
-<P>0.0</P>
-<PD>100</PD>
-<F>0.0</F>
-<FP>0.0</FP>
-<FPT>0</FPT>
-<UB>12.7</UB>
-<U23>0.0</U23>
-<U31>0.0</U31>
-<V1>0.0</V1>
-<V2>0.0</V2>
-<V3>0.0</V3>
-<I1>0.0</I1>
-<I2>0.0</I2>
-<I3>0.0</I3>
-<IN>0.0</IN>
-<Q>0.0</Q>
-<S>0.0</S>
-<CPP>2448</CPP>
-<CPT>2448</CPT>
-<CQP>0</CQP>
-<CQT>0</CQT>
-<MOT1>0</MOT1>
-<MOT2>0</MOT2>
-<MOT3>0</MOT3>
-<MOT4>0</MOT4>
-<MOT5>0</MOT5>
-<IB>0</IB>
-<PH>0.5</PH>
-<TH>----</TH>
-<WTH>41</WTH>
-<NF>100</NF>
-<RPM>0</RPM>
-<CTP>00:50:35</CTP>
-<CTT>581:25:49</CTT>
-<WTB>0</WTB>
-<OVERRIDE>0</OVERRIDE>
-</Result>
+XMLName    xml.Name `xml:"Result" json:"-"`
+U12  float64 `xml:"U12" json:"U12"`
+P    float64 `xml:"P" json:"P"`
+PD   float64 `xml:"PD" json:"PD"`
+F    float64 `xml:"F" json:"F"`
+FP   float64 `xml:"FP" json:"FP"`
+FPT  float64 `xml:"FPT" json:"FPT"`
+UB   float64 `xml:"UB" json:"UB"`
+U23  float64 `xml:"U23" json:"U23"`
+U31  float64 `xml:"U31" json:"U31"`
+V1   float64 `xml:"V1" json:"V1"`
+V2   float64 `xml:"V2" json:"V2"`
+V3   float64 `xml:"V3" json:"V3"`
+I1   float64 `xml:"I1" json:"I1"`
+I2   float64 `xml:"I2" json:"I2"`
+I3   float64 `xml:"I3" json:"I3"`
+IN   float64 `xml:"IN" json:"IN"`
+Q    float64 `xml:"Q" json:"Q"`
+S    float64 `xml:"S" json:"S"`
+CPP  float64 `xml:"CPP" json:"CPP"`
+CPT  float64 `xml:"CPT" json:"CPT"`
+CQP  float64 `xml:"CQP" json:"CQP"`
+CQT  float64 `xml:"CQT" json:"CQT"`
+MOT1 float64 `xml:"MOT1" json:"MOT1"`
+MOT2 float64 `xml:"MOT2" json:"MOT2"`
+MOT3 float64 `xml:"MOT3" json:"MOT3"`
+MOT4 float64 `xml:"MOT4" json:"MOT4"`
+MOT5 float64 `xml:"MOT5" json:"MOT5"`
+IB   float64 `xml:"IB" json:"IB"`
+PH   float64 `xml:"PH" json:"PH"`
+TH   float64 `xml:"TH" json:"TH"`
+WTH  float64 `xml:"WTH" json:"WTH"`
+NF   float64 `xml:"NF" json:"NF"`
+RPM  float64 `xml:"RPM" json:"RPM"`
+CTP  float64 `xml:"CTP" json:"CTP"`
+CTT  float64 `xml:"CTT" json:"CTT"`
+WTB  float64 `xml:"WTB" json:"WTB"`
+OVERRIDE float64 `xml:"OVERRIDE" json:"OVERRIDE"`
+}
