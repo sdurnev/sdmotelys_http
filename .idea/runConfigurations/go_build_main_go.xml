@@ -2,7 +2,6 @@
   <configuration default="false" name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
     <module name="sdmotelys_http" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="-data=`&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-15&quot; ?&gt;&lt;Result DateTime=&quot;6/3/2020 10:05&quot;&gt; &lt;U12&gt;3990000.8&lt;/U12&gt; &lt;P&gt;0.0&lt;/P&gt; &lt;PD&gt;100&lt;/PD&gt; &lt;F&gt;52.19&lt;/F&gt; &lt;FP&gt;0.0&lt;/FP&gt; &lt;FPT&gt;0&lt;/FPT&gt; &lt;UB&gt;14.7&lt;/UB&gt; &lt;U23&gt;403.0&lt;/U23&gt; &lt;U31&gt;400.7&lt;/U31&gt; &lt;V1&gt;230.5&lt;/V1&gt; &lt;V2&gt;231.8&lt;/V2&gt; &lt;V3&gt;232.4&lt;/V3&gt; &lt;I1&gt;0.0&lt;/I1&gt; &lt;I2&gt;0.0&lt;/I2&gt; &lt;I3&gt;0.0&lt;/I3&gt; &lt;IN&gt;0.0&lt;/IN&gt; &lt;Q&gt;0.0&lt;/Q&gt; &lt;S&gt;0.0&lt;/S&gt; &lt;CPP&gt;2448&lt;/CPP&gt; &lt;CPT&gt;2448&lt;/CPT&gt; &lt;CQP&gt;0&lt;/CQP&gt; &lt;CQT&gt;0&lt;/CQT&gt; &lt;MOT1&gt;0&lt;/MOT1&gt; &lt;MOT2&gt;0&lt;/MOT2&gt; &lt;MOT3&gt;0&lt;/MOT3&gt; &lt;MOT4&gt;0&lt;/MOT4&gt; &lt;MOT5&gt;0&lt;/MOT5&gt; &lt;IB&gt;0&lt;/IB&gt; &lt;PH&gt;4.7&lt;/PH&gt; &lt;TH&gt;----&lt;/TH&gt; &lt;WTH&gt;67&lt;/WTH&gt; &lt;NF&gt;100&lt;/NF&gt; &lt;RPM&gt;1565&lt;/RPM&gt; &lt;CTP&gt;00:55:25&lt;/CTP&gt; &lt;CTT&gt;581:30:39&lt;/CTT&gt; &lt;WTB&gt;0&lt;/WTB&gt; &lt;OVERRIDE&gt;0&lt;/OVERRIDE&gt; &lt;/Result&gt;`" />
     <kind value="FILE" />
     <filePath value="$PROJECT_DIR$/main.go" />
     <directory value="$PROJECT_DIR$/" />
