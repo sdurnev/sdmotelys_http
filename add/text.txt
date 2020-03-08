@@ -1,59 +1,84 @@
 curl 'http://localhost:1111/WebTelys?Request=Status' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:73.0) Gecko/20100101 Firefox/73.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' -H 'Referer: http://localhost:1111/Conduit.asp' -H 'Cookie: Langue=En'
 <?xml version="1.0" encoding="ISO-8859-15" ?>
 <Result DateTime="6/3/2020 10:06">
-<Mode>1</Mode><State>2</State><TTest>0</TTest><CTest>0</CTest><VTest>0</VTest><CouplType>0</CouplType><CouplState>0</CouplState><CouplPrio>0</CouplPrio></Result>
+    <Mode>1</Mode>
+    <State>2</State>
+    <TTest>0</TTest>
+    <CTest>0</CTest>
+    <VTest>0</VTest>
+    <CouplType>0</CouplType>
+    <CouplState>0</CouplState>
+    <CouplPrio>0</CouplPrio>
+</Result>
+
+=============================================
 
 curl 'http://localhost:1111/WebTelys?Request=Anomaly' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:73.0) Gecko/20100101 Firefox/73.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' -H 'Referer: http://localhost:1111/Conduit.asp' -H 'Cookie: Langue=En'
 <?xml version="1.0" encoding="ISO-8859-15" ?>
 <Result DateTime="6/3/2020 10:06">
-<Alarm><Alarm-IDLabel>0</Alarm-IDLabel><Alarm-Label>-</Alarm-Label><Alarm-DateTime>-</Alarm-DateTime><Alarm-All>- -</Alarm-All></Alarm><Default><Default-IDLabel>0</Default-IDLabel><Default-Label>-</Default-Label><Default-DateTime>-</Default-DateTime><Default-All>- -</Default-All></Default></Result>
-
+    <Alarm>
+        <Alarm-IDLabel>0</Alarm-IDLabel>
+        <Alarm-Label>-</Alarm-Label>
+        <Alarm-DateTime>-</Alarm-DateTime>
+        <Alarm-All>- -</Alarm-All>
+    </Alarm>
+    <Default>
+        <Default-IDLabel>0</Default-IDLabel>
+        <Default-Label>-</Default-Label>
+        <Default-DateTime>-</Default-DateTime>
+        <Default-All>- -</Default-All>
+    </Default>
+</Result>
+=============================================
 curl 'http://localhost:1111/WebTelys?Request=Usine' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:73.0) Gecko/20100101 Firefox/73.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' -H 'Referer: http://localhost:1111/Conduit.asp' -H 'Cookie: Langue=En'
 <?xml version="1.0" encoding="ISO-8859-15" ?>
 <Result DateTime="6/3/2020 10:06">
-<Reseau>4</Reseau><Commut>2</Commut></Result>
+    <Reseau>4</Reseau>
+    <Commut>2</Commut>
+</Result>
 
+=============================================
 
 curl 'http://localhost:1111/WebTelys?Request=Mesure' -H 'Content type: text/xml;charset=utf-8' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:73.0) Gecko/20100101 Firefox/73.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3,' --compressed -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' -H 'Referer: http://localhost:1111/Conduit.asp' -H 'Cookie: Langue=En'
 <?xml version="1.0" encoding="ISO-8859-15" ?>
 <Result DateTime="6/3/2020 10:05">
-<U12>399.8</U12>
-<P>0.0</P>
-<PD>100</PD>
-<F>52.19</F>
-<FP>0.0</FP>
-<FPT>0</FPT>
-<UB>14.7</UB>
-<U23>403.0</U23>
-<U31>400.7</U31>
-<V1>230.5</V1>
-<V2>231.8</V2>
-<V3>232.4</V3>
-<I1>0.0</I1>
-<I2>0.0</I2>
-<I3>0.0</I3>
-<IN>0.0</IN>
-<Q>0.0</Q>
-<S>0.0</S>
-<CPP>2448</CPP>
-<CPT>2448</CPT>
-<CQP>0</CQP>
-<CQT>0</CQT>
-<MOT1>0</MOT1>
-<MOT2>0</MOT2>
-<MOT3>0</MOT3>
-<MOT4>0</MOT4>
-<MOT5>0</MOT5>
-<IB>0</IB>
-<PH>4.7</PH>
-<TH>----</TH>
-<WTH>67</WTH>
-<NF>100</NF>
-<RPM>1565</RPM>
-<CTP>00:55:25</CTP>
-<CTT>581:30:39</CTT>
-<WTB>0</WTB>
-<OVERRIDE>0</OVERRIDE>
+    <U12>399.8</U12>
+    <P>0.0</P>
+    <PD>100</PD>
+    <F>52.19</F>
+    <FP>0.0</FP>
+    <FPT>0</FPT>
+    <UB>14.7</UB>
+    <U23>403.0</U23>
+    <U31>400.7</U31>
+    <V1>230.5</V1>
+    <V2>231.8</V2>
+    <V3>232.4</V3>
+    <I1>0.0</I1>
+    <I2>0.0</I2>
+    <I3>0.0</I3>
+    <IN>0.0</IN>
+    <Q>0.0</Q>
+    <S>0.0</S>
+    <CPP>2448</CPP>
+    <CPT>2448</CPT>
+    <CQP>0</CQP>
+    <CQT>0</CQT>
+    <MOT1>0</MOT1>
+    <MOT2>0</MOT2>
+    <MOT3>0</MOT3>
+    <MOT4>0</MOT4>
+    <MOT5>0</MOT5>
+    <IB>0</IB>
+    <PH>4.7</PH>
+    <TH>----</TH>
+    <WTH>67</WTH>
+    <NF>100</NF>
+    <RPM>1565</RPM>
+    <CTP>00:55:25</CTP>
+    <CTT>581:30:39</CTT>
+    <WTB>0</WTB>
+    <OVERRIDE>0</OVERRIDE>
 </Result>
 
 
