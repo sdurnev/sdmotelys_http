@@ -9,6 +9,9 @@ import (
 	"github.com/paulrosania/go-charset/charset"
 	_ "github.com/paulrosania/go-charset/charset"
 	_ "github.com/paulrosania/go-charset/data"
+	"io/ioutil"
+	"log"
+	"net/http"
 )
 
 type Result struct {
@@ -52,11 +55,37 @@ type Result struct {
 	OVERRIDE float64  `xml:"OVERRIDE" json:"OVERRIDE"`
 }
 
+func getXML(url string) ([]byte, error) {
+	resp, err := http.Get(url)
+	if err != nil {
+		return []byte{}, fmt.Errorf("GET error: %v", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return []byte{}, fmt.Errorf("Status error: %v", resp.StatusCode)
+	}
+
+	data, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return []byte{}, fmt.Errorf("Read body: %v", err)
+	}
+
+	return data, nil
+}
+
 func main() {
 	var rawXmlData string
 
 	StringData := flag.String("data", "0", "a string")
 	flag.Parse()
+
+	if xmlBytes, err := getXML("http://localhost:1123/WebTelys?Request=Mesure"); err != nil {
+		log.Printf("Failed to get XML: %v", err)
+	} else {
+		//var result myXMLstruct
+		fmt.Println(xmlBytes)
+	}
 
 	if *StringData == "0" {
 		rawXmlData = `<?xml version="1.0" encoding="ISO-8859-15" ?>

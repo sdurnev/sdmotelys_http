@@ -122,3 +122,6 @@ curl 'http://localhost:1111/WebTelys?Request=Mesure' -H 'Content type: text/xml;
 <WTB>0</WTB>
 <OVERRIDE>0</OVERRIDE>
 </Result>
+
+
+
