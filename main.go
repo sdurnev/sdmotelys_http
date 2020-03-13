@@ -4,14 +4,12 @@ import (
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
-	"flag"
 	"fmt"
 	"github.com/paulrosania/go-charset/charset"
 	_ "github.com/paulrosania/go-charset/charset"
 	_ "github.com/paulrosania/go-charset/data"
 	"io/ioutil"
-	"log"
-	"net/http"
+	"os"
 )
 
 type Result struct {
@@ -55,7 +53,7 @@ type Result struct {
 	OVERRIDE float64  `xml:"OVERRIDE" json:"OVERRIDE"`
 }
 
-func getXML(url string) ([]byte, error) {
+/*func getXML(url string) ([]byte, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return []byte{}, fmt.Errorf("GET error: %v", err)
@@ -72,22 +70,34 @@ func getXML(url string) ([]byte, error) {
 	}
 
 	return data, nil
-}
+}*/
 
 func main() {
-	var rawXmlData string
+	//var rawXmlData string
 
-	StringData := flag.String("data", "0", "a string")
-	flag.Parse()
+	xmlFile, err := os.Open("out1.xml")
 
-	if xmlBytes, err := getXML("http://localhost:1123/WebTelys?Request=Mesure"); err != nil {
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println("Successfully Opened users.xml")
+
+	defer xmlFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(xmlFile)
+
+	/*StringData := flag.String("data", "0", "a string")
+	flag.Parse()*/
+
+	/*if xmlBytes, err := getXML("http://localhost:1123/WebTelys?Request=Mesure"); err != nil {
 		log.Printf("Failed to get XML: %v", err)
 	} else {
 		//var result myXMLstruct
 		fmt.Println(xmlBytes)
-	}
+	}*/
 
-	if *StringData == "0" {
+	/*if *StringData == "0" {
 		rawXmlData = `<?xml version="1.0" encoding="ISO-8859-15" ?>
 		<Result DateTime="6/3/2020 10:05">
 		<U12>399.8</U12>
@@ -130,20 +140,27 @@ func main() {
 		</Result>`
 	} else {
 		rawXmlData = *StringData
-	}
+	}*/
+
+	/*
+	   =============
+	*/
 
 	var feed Result
 
-	reader := bytes.NewReader([]byte(rawXmlData))
+	reader := bytes.NewReader(byteValue)
+	//reader := bytes.NewReader([]byte(rawXmlData))
 	decoder := xml.NewDecoder(reader)
 	decoder.CharsetReader = charset.NewReader
-	err := decoder.Decode(&feed)
+	err = decoder.Decode(&feed)
 	if err != nil {
 		fmt.Println("decoder error:", err)
 	}
-	//fmt.Println(feed)
+	fmt.Println(feed)
 
-	xml.Unmarshal([]byte(rawXmlData), &feed)
+	xml.Unmarshal(byteValue, &feed)
+	//	xml.Unmarshal([]byte(rawXmlData), &feed)
 	jsonData, _ := json.Marshal(feed)
 	fmt.Println(string(jsonData))
+
 }
