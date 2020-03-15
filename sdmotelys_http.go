@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
+	"flag"
 	"fmt"
 	"github.com/paulrosania/go-charset/charset"
 	_ "github.com/paulrosania/go-charset/charset"
@@ -11,6 +12,8 @@ import (
 	"io/ioutil"
 	"os"
 )
+
+const version = "0.0.1"
 
 type Result struct {
 	XMLName  xml.Name `xml:"Result" json:"-"`
@@ -47,104 +50,48 @@ type Result struct {
 	WTH      float64  `xml:"WTH" json:"GENS_TEN_D"`
 	NF       float64  `xml:"NF" json:"NF"`
 	RPM      float64  `xml:"RPM" json:"GENS_RPM"`
-	CTP      string   `xml:"CTP" json:"CTP"`
-	CTT      string   `xml:"CTT" json:"CTT"`
+	CTP      string   `xml:"CTP" json:"GENS_WORK_T_P"`
+	CTT      string   `xml:"CTT" json:"GENS_WORK_T_D"`
 	WTB      float64  `xml:"WTB" json:"WTB"`
 	OVERRIDE float64  `xml:"OVERRIDE" json:"OVERRIDE"`
+	VERSION  string   `xml:"VERSION" json:"VERSION"`
 }
 
-/*func getXML(url string) ([]byte, error) {
-	resp, err := http.Get(url)
-	if err != nil {
-		return []byte{}, fmt.Errorf("GET error: %v", err)
+func Parse(st string) float64 {
+	var h, m, s int
+	n, err := fmt.Sscanf(st, "%d:%d:%d", &h, &m, &s)
+	if err != nil || n != 3 {
+		return 0
 	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return []byte{}, fmt.Errorf("Status error: %v", resp.StatusCode)
-	}
-
-	data, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return []byte{}, fmt.Errorf("Read body: %v", err)
-	}
-
-	return data, nil
-}*/
+	//	fmt.Println(float64(h))
+	//	fmt.Println(float64(m))
+	hour := float64(h) + float64(m)/60
+	return float64(hour)
+}
 
 func main() {
-	//var rawXmlData string
 
-	xmlFile, err := os.Open("out1.xml")
+	fileName := flag.String("filename", "", "a string")
+	flag.Parse()
+
+	if *fileName == "" {
+		fmt.Printf("{\"error\":\"no file\", \"VERSION\": \"%s\"}", version)
+		os.Exit(2)
+	}
+	//	serverParam := fmt.Sprint(*fileName)
+
+	xmlFile, err := os.Open(*fileName)
 
 	if err != nil {
 		fmt.Println(err)
+		os.Exit(3)
 	}
 
-	fmt.Println("Successfully Opened users.xml")
+	//fmt.Println("Successfully Opened users.xml")
 
 	defer xmlFile.Close()
 
 	byteValue, _ := ioutil.ReadAll(xmlFile)
-
-	/*StringData := flag.String("data", "0", "a string")
-	flag.Parse()*/
-
-	/*if xmlBytes, err := getXML("http://localhost:1123/WebTelys?Request=Mesure"); err != nil {
-		log.Printf("Failed to get XML: %v", err)
-	} else {
-		//var result myXMLstruct
-		fmt.Println(xmlBytes)
-	}*/
-
-	/*if *StringData == "0" {
-		rawXmlData = `<?xml version="1.0" encoding="ISO-8859-15" ?>
-		<Result DateTime="6/3/2020 10:05">
-		<U12>399.8</U12>
-		<P>0.0</P>
-		<PD>100</PD>
-		<F>52.19</F>
-		<FP>0.0</FP>
-		<FPT>0</FPT>
-		<UB>14.7</UB>
-		<U23>403.0</U23>
-		<U31>400.7</U31>
-		<V1>230.5</V1>
-		<V2>231.8</V2>
-		<V3>232.4</V3>
-		<I1>0.0</I1>
-		<I2>0.0</I2>
-		<I3>0.0</I3>
-		<IN>0.0</IN>
-		<Q>0.0</Q>
-		<S>0.0</S>
-		<CPP>2448</CPP>
-		<CPT>2448</CPT>
-		<CQP>0</CQP>
-		<CQT>0</CQT>
-		<MOT1>0</MOT1>
-		<MOT2>0</MOT2>
-		<MOT3>0</MOT3>
-		<MOT4>0</MOT4>
-		<MOT5>0</MOT5>
-		<IB>0</IB>
-		<PH>4.7</PH>
-		<TH>----</TH>
-		<WTH>67</WTH>
-		<NF>100</NF>
-		<RPM>1565</RPM>
-		<CTP>00:55:25</CTP>
-		<CTT>581:30:39</CTT>
-		<WTB>0</WTB>
-		<OVERRIDE>0</OVERRIDE>
-		</Result>`
-	} else {
-		rawXmlData = *StringData
-	}*/
-
-	/*
-	   =============
-	*/
 
 	var feed Result
 
@@ -154,13 +101,16 @@ func main() {
 	decoder.CharsetReader = charset.NewReader
 	err = decoder.Decode(&feed)
 	if err != nil {
-		fmt.Println("decoder error:", err)
+		fmt.Printf("{\"decoder error\": \"%s\", \"VERSION\": \"%s\"} \n", err, version)
+		os.Exit(4)
+	} else {
+		xml.Unmarshal(byteValue, &feed)
+		t1 := Parse(feed.CTP)
+		t2 := Parse(feed.CTT)
+		feed.CTP = fmt.Sprintf("%.2f", t1)
+		feed.CTT = fmt.Sprintf("%.2f", t2)
+		feed.VERSION = version
+		jsonData, _ := json.Marshal(feed)
+		fmt.Println(string(jsonData))
 	}
-	fmt.Println(feed)
-
-	xml.Unmarshal(byteValue, &feed)
-	//	xml.Unmarshal([]byte(rawXmlData), &feed)
-	jsonData, _ := json.Marshal(feed)
-	fmt.Println(string(jsonData))
-
 }

@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="sdmotelys_http" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="sdmotelys_http" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <parameters value="-filename=add/out.xml" />
+    <kind value="FILE" />
+    <filePath value="$PROJECT_DIR$/sdmotelys_http.go" />
+    <package value="sdmotelys_http" />
+    <directory value="$PROJECT_DIR$/" />
+    <output_directory value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build_all" type="CompoundRunConfigurationType">
+    <toRun name="sdmotelys_http_linux" type="GoApplicationRunConfiguration" />
+    <toRun name="sdmotelys_http_rpi" type="GoApplicationRunConfiguration" />
+    <method v="2" />
+  </configuration>
+</component>
